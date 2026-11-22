@@ -37,7 +37,7 @@ function buildQuiz(topic: string, subject: string, difficulty: string, count: nu
         return { prompt: `A number is multiplied by 3 to make ${answer * 3}. What is the number?`, options: [String(answer + 1), String(answer - 1), String(answer), String(answer * 3)], answer: 2, explanation: `Use the inverse operation: ${answer * 3} ÷ 3 = ${answer}.` };
       }
       const answer = (i % 5) + 2;
-      return { prompt: `Which fraction is equivalent to ${answer}/${answer * 2}?`, options: [`1/${answer}`, `2/${answer}`, `1/${answer * 2}`, `1/${answer + 1}`], answer: 0, explanation: `Divide the numerator and denominator by ${answer}: ${answer}/${answer * 2} = 1/2. (The first option is 1/${answer}; review the original fraction carefully.)` };
+      return { prompt: `Which fraction is equivalent to ${answer}/${answer * 2}?`, options: ["1/2", "1/3", "2/5", "3/4"], answer: 0, explanation: `Divide the numerator and denominator by ${answer}: ${answer}/${answer * 2} simplifies to 1/2.` };
     });
     return bank.map((q) => format === "multiple"
       ? q
