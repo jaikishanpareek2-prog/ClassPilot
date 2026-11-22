@@ -117,7 +117,7 @@ export default function QuizGenerator() {
             <p className="worksheet-instructions">Answer every question. Read carefully and check your work before handing it in.</p>
             <ol className="quiz-question-list">{questions.map((q, i) => <li key={i}>
               <textarea rows={2} aria-label={`Edit question ${i + 1}`} value={q.prompt} onChange={(e) => updateQuestion(i, { prompt: e.target.value })} />
-              {format === "multiple" ? <div className="quiz-options">{q.options.map((option, j) => <label key={j}><span>{String.fromCharCode(65 + j)}.</span><input aria-label={`Edit option ${j + 1} for question ${i + 1}`} value={option} onChange={(e) => updateOption(i, j, e.target.value)} /></label>)}</div> : <div className="quiz-writing-lines"><i/><i/><i/></div>}
+              {format === "multiple" ? <div className="quiz-options">{q.options.map((option, j) => <label key={j}><span>{String.fromCharCode(65 + j)}.</span><input aria-label={`Edit option ${j + 1} for question ${i + 1}`} value={option} onChange={(e) => updateOption(i, j, e.target.value)} /><input className="quiz-correct-radio" type="radio" name={`correct-answer-${i}`} checked={q.answer === j} onChange={() => updateQuestion(i, { answer: j })} aria-label={`Mark option ${j + 1} as correct for question ${i + 1}`} /></label>)}</div><p className="quiz-answer-hint">Select the correct option for the teacher answer key.</p> : <div className="quiz-writing-lines"><i/><i/><i/></div>}
             </li>)}</ol>
             <div className="worksheet-paper-footer">DO YOUR BEST <span>✦</span></div>
           </article>

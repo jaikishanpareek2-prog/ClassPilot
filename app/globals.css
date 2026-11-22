@@ -139,7 +139,7 @@
 .quiz-options{display:grid;gap:8px;margin:11px 0 0 4px}
 .quiz-options label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:400}
 .quiz-options label span{font-weight:700;color:#718779}
-.quiz-options input{flex:1;min-width:0;border:1px solid transparent;border-radius:3px;padding:3px;background:transparent;font:inherit;color:inherit}
+.quiz-options input:not([type=radio]){flex:1;min-width:0;border:1px solid transparent;border-radius:3px;padding:3px;background:transparent;font:inherit;color:inherit}\n.quiz-options input.quiz-correct-radio{flex:0 0 14px;width:14px;height:14px;margin:0 4px 0 8px;accent-color:#718779;cursor:pointer}\n.quiz-answer-hint{font-size:9px;color:#829087;margin:8px 0 0 4px}
 .quiz-writing-lines{display:grid;gap:15px;margin-top:14px}
 .quiz-writing-lines i{display:block;border-bottom:1px solid #e3e8e2;height:8px}
 .quiz-key{background:#f3f5ef;border:1px solid #e3e9df;border-radius:8px;padding:22px 25px;margin-top:15px;color:#46594b}
@@ -157,7 +157,7 @@
  .quiz-paper{border:0;box-shadow:none;padding:0}
  .quiz-paper,.quiz-key{break-inside:avoid}
  .quiz-key{background:#fff;border:0;border-top:1px solid #aaa;border-radius:0;margin-top:25px;padding:20px 0 0}
- .quiz-question-list textarea,.quiz-options input{border:0!important;outline:0!important;resize:none;padding:0;margin:0;background:transparent!important}
+ .quiz-question-list textarea,.quiz-options input:not([type=radio]){border:0!important;outline:0!important;resize:none;padding:0;margin:0;background:transparent!important}\n .quiz-options input[type=radio],.quiz-answer-hint{display:none!important}
  @page{size:A4;margin:16mm}
 }
 
