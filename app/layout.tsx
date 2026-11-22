@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   description:
     "Practical, beautifully simple tools for teachers. Create lesson plans, classroom resources and more, without the busywork.",
   applicationName: "ClassPilot",
-  metadataBase: new URL("https://classpilot.app"),
   openGraph: {
     title: "ClassPilot — Teach with a little more ease",
     description: "Thoughtful tools that give teachers more time to teach.",
