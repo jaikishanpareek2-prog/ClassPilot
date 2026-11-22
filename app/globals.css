@@ -51,3 +51,24 @@
 @media(max-width:850px){.certificate-layout{grid-template-columns:1fr}.certificate-preview-column{order:-1}.certificate-form{padding:26px}}
 @media(max-width:560px){.certificate-layout{padding-top:10px}.certificate-form{padding:22px 18px}.certificate-actions{flex-direction:column}.certificate-actions .button{width:100%}.certificate-preview-column{margin-inline:-2px}.certificate-art{padding:8px}.certificate-inner{outline-offset:-4px}.certificate-topline{letter-spacing:1px}.certificate-message{max-width:85%}}
 @media print{body{background:white!important}.tool-page>.nav,.tool-intro,.certificate-form,.preview-heading,.certificate-actions,.certificate-footnote,.footer{display:none!important}.certificate-layout{display:block;width:100%;padding:0;margin:0}.certificate-preview-column{width:100%;margin:0}.certificate-art{width:100%;height:190mm;aspect-ratio:auto;box-shadow:none;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}.certificate-inner{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4 landscape;margin:8mm}}
+
+/* Bulk certificate import */
+.bulk-import-panel{margin-top:28px;padding:20px;border:1px solid #e4e9e1;border-radius:8px;background:#f7f8f3}
+.bulk-import-panel h3{font:500 20px var(--serif);margin:7px 0}
+.bulk-import-panel>p{font-size:10px;line-height:1.65;color:#78847b;margin:7px 0 13px}
+.bulk-template-button{margin:0 0 12px}
+.bulk-file-label{display:block;border:1px dashed #9aaa9a;border-radius:7px;padding:12px;background:#fff;font-size:11px!important}
+.bulk-file-label input{border:0!important;padding:8px 0 0!important;margin:0!important;background:transparent!important;font-size:11px!important}
+.bulk-ready{display:flex;flex-direction:column;gap:7px;margin-top:14px;padding:13px;background:#edf4ed;border-radius:7px;color:#36584c;font-size:11px}
+.bulk-ready span{font-size:9px;color:#78847b;overflow-wrap:anywhere}
+.bulk-ready .button{margin-top:5px}
+.bulk-clear{align-self:flex-start;border:0;background:none;color:#64766a;text-decoration:underline;font-size:10px;padding:4px;cursor:pointer}
+.bulk-error{color:#a33!important;background:#fff0ed;padding:9px;border-radius:5px}
+.bulk-csv-hint{font-size:9px!important}
+.bulk-print-sheet{display:none}
+@media print{
+  .certificate-layout.bulk-print-active .certificate-preview-column{display:none!important}
+  .certificate-layout.bulk-print-active .bulk-print-sheet{display:block!important;width:100%;margin:0;padding:0}
+  .bulk-print-sheet .certificate-art{width:100%;height:190mm;aspect-ratio:auto;margin:0;box-shadow:none;break-after:page;page-break-after:always;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .bulk-print-sheet .certificate-art:last-child{break-after:auto;page-break-after:auto}
+}
