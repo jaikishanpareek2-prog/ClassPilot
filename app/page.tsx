@@ -4,7 +4,7 @@ const tools = [
   { number: "01", name: "Lesson planner", detail: "Turn a topic into a clear, teachable lesson.", tag: "Available now", href: "/tools/lesson-planner", icon: "✳" },
   { number: "02", name: "Certificate maker", detail: "Create polished certificates worth keeping.", tag: "Available now", href: "/tools/certificate-maker", icon: "✧" },
   { number: "03", name: "Worksheet builder", detail: "Make practice sheets for every level.", tag: "Available now", href: "/tools/worksheet-generator", icon: "▤" },
-  { number: "04", name: "Quiz generator", detail: "Build quick checks for understanding.", tag: "In the works", href: "#roadmap", icon: "⌁" },
+  { number: "04", name: "Quiz generator", detail: "Build quick checks for understanding.", tag: "Available now", href: "/tools/quiz-generator", icon: "⌁" },
 ];
 
 export default function Home() {

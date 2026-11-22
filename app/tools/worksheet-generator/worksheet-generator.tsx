@@ -70,7 +70,7 @@ export default function WorksheetGenerator() {
         <label>Worksheet topic<input value={topic} maxLength={100} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Fractions, plants, persuasive writing" /></label>
         <label>Worksheet title<input value={title} maxLength={90} onChange={(e) => setTitle(e.target.value)} placeholder="Optional custom title" /></label>
         <div className="form-row">
-          <label>Subject<select value={subject} onChange={(e) => setSubject(e.target.value as Subject)}>{subjects.map((item) => <option key={item}>{item}</option>)}</select></label>
+          <label>Subject<select value={subject} onChange={(e) => setSubject(e.target.value)}>{subjects.map((item) => <option key={item}>{item}</option>)}</select></label>
           <label>Level<select value={level} onChange={(e) => setLevel(e.target.value)}>{["Early primary","Upper primary","Middle school","High school"].map((item) => <option key={item}>{item}</option>)}</select></label>
         </div>
         <label>Number of questions<select value={count} onChange={(e) => setCount(e.target.value)}>{["5","8","10","12","15"].map((item) => <option key={item} value={item}>{item} questions</option>)}</select></label>
@@ -92,7 +92,7 @@ export default function WorksheetGenerator() {
               <p className="worksheet-subtitle">{subject} · {level}</p>
               {studentName && <div className="worksheet-student-line"><span>Name: __________________________</span><span>Date: ______________</span></div>}
               <p className="worksheet-instructions">Read each question carefully. Show your thinking and write your answers in the space provided.</p>
-              <ol className="worksheet-question-list">{questions.map((question, index) => <li key={index}><textarea className="worksheet-question-edit" aria-label={`Edit question ${index + 1}`} rows={2} value={question.prompt} onChange={(e) => updateQuestion(index, e.target.value)} /><div className="worksheet-answer-space" /></li>)}</ol>
+              <ol className="worksheet-question-list">{questions.map((question, index) => <li key={index}><div>{question.prompt}</div><div className="worksheet-answer-space" /></li>)}</ol>
               <div className="worksheet-paper-footer">YOU'VE GOT THIS <span>✦</span></div>
             </article>
             {showKey && <article className="worksheet-key"><div className="form-step">TEACHER COPY</div><h3>Answer key · {title.trim() || topic}</h3><ol>{questions.map((q, i) => <li key={i}>{q.answer}</li>)}</ol></article>}
