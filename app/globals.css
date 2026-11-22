@@ -181,7 +181,7 @@
 .rubric-meta{display:flex;gap:25px;flex-wrap:wrap;font-size:10px;color:#748176;margin-bottom:18px}
 .rubric-student{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-top:1px solid #e6eae4;border-bottom:1px solid #e6eae4;font-size:10px;color:#65746a;margin-bottom:16px}
 .rubric-table-wrap{width:100%;overflow-x:auto}
-.rubric-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.rubric-table{width:100%;min-width:760px;border-collapse:collapse;table-layout:fixed}
 .rubric-table th,.rubric-table td{border:1px solid #dfe5dd;padding:9px;vertical-align:top;text-align:left}
 .rubric-table thead th{background:#f0f4ee;color:#405b49;font-size:10px;font-weight:700}
 .rubric-table thead th:first-child{width:17%}
@@ -206,7 +206,7 @@
  .rubric-paper{border:0;box-shadow:none;padding:0}
  .rubric-title-edit{border:0!important;outline:0!important;padding:0}
  .rubric-table-wrap{overflow:visible}
- .rubric-table{width:100%;table-layout:fixed}
+ .rubric-table{width:100%;min-width:0;table-layout:fixed}
  .rubric-table th,.rubric-table td{break-inside:avoid}
  .rubric-table td textarea,.rubric-table tbody th input{border:0!important;outline:0!important;resize:none;padding:0;background:transparent!important}
  .rubric-remove{display:none!important}
