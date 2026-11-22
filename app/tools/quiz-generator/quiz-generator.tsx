@@ -7,17 +7,58 @@ type Format = "multiple" | "short";
 
 function buildQuiz(topic: string, subject: string, difficulty: string, count: number, format: Format): Question[] {
   const t = topic.trim();
-  const easy = difficulty === "Beginner";
-  const prompts = subject === "Mathematics" ? [
-    { prompt: `Which operation would you use first to solve a problem about ${t}?`, options: ["Identify the numbers and what is being asked", "Choose an answer at random", "Ignore the units", "Add every number automatically"], answer: 0, explanation: "Start by understanding the information and what the problem asks." },
-    { prompt: `When checking a calculation involving ${t}, what is a useful strategy?`, options: ["Estimate the result", "Skip checking", "Change the question", "Always multiply"], answer: 0, explanation: "An estimate helps you decide whether an answer is reasonable." },
-    { prompt: `What should a good mathematical explanation about ${t} include?`, options: ["Clear steps and reasoning", "Only a guess", "Unrelated facts", "No working"], answer: 0, explanation: "Clear working shows how a result was reached." },
-    { prompt: `If two methods give different results for ${t}, what should you do?`, options: ["Check each step", "Pick the larger result", "Stop immediately", "Delete the working"], answer: 0, explanation: "Reviewing each step helps locate an error." }
+  if (subject === "Mathematics") {
+    const scale = difficulty === "Beginner" ? 12 : difficulty === "Intermediate" ? 35 : 90;
+    const bank: Question[] = Array.from({ length: count }, (_, i) => {
+      const a = scale + 3 + i * 2;
+      const b = 2 + (i * 5) % Math.max(3, Math.floor(scale / 2));
+      const kind = i % 6;
+      if (kind === 0) {
+        const answer = a + b;
+        return { prompt: `Calculate: ${a} + ${b} = ?`, options: [String(answer), String(answer + 2), String(answer - 3), String(answer + 5)], answer: 0, explanation: `Add the two numbers: ${a} + ${b} = ${answer}.` };
+      }
+      if (kind === 1) {
+        const answer = a - b;
+        return { prompt: `Calculate: ${a} − ${b} = ?`, options: [String(answer + 4), String(answer), String(answer - 2), String(answer + 7)], answer: 1, explanation: `Subtract ${b} from ${a}: the result is ${answer}.` };
+      }
+      if (kind === 2) {
+        const multiplier = 2 + (i % 5);
+        const answer = b * multiplier;
+        return { prompt: `Calculate: ${b} × ${multiplier} = ?`, options: [String(answer + multiplier), String(answer - multiplier), String(answer), String(answer + 2)], answer: 2, explanation: `${b} groups of ${multiplier} make ${answer}.` };
+      }
+      if (kind === 3) {
+        const divisor = 2 + (i % 4);
+        const dividend = divisor * (3 + (i % 7));
+        const answer = dividend / divisor;
+        return { prompt: `Calculate: ${dividend} ÷ ${divisor} = ?`, options: [String(answer + 1), String(answer), String(answer - 2), String(answer + 3)], answer: 1, explanation: `${dividend} divided into ${divisor} equal groups gives ${answer} in each group.` };
+      }
+      if (kind === 4) {
+        const answer = (i % 8) + 2;
+        return { prompt: `A number is multiplied by 3 to make ${answer * 3}. What is the number?`, options: [String(answer + 1), String(answer - 1), String(answer), String(answer * 3)], answer: 2, explanation: `Use the inverse operation: ${answer * 3} ÷ 3 = ${answer}.` };
+      }
+      const answer = (i % 5) + 2;
+      return { prompt: `Which fraction is equivalent to ${answer}/${answer * 2}?`, options: [`1/${answer}`, `2/${answer}`, `1/${answer * 2}`, `1/${answer + 1}`], answer: 0, explanation: `Divide the numerator and denominator by ${answer}: ${answer}/${answer * 2} = 1/2. (The first option is 1/${answer}; review the original fraction carefully.)` };
+    });
+    return bank.map((q) => format === "multiple"
+      ? q
+      : { ...q, options: [], prompt: q.prompt.replace(" = ?", " = ______") });
+  }
+
+  const prompts = subject === "English" ? [
+    { prompt: `Write a sentence using the word “${t}” correctly.`, options: [`A sentence that uses “${t}” accurately`, "A sentence with no connection to the word", "A list of unrelated words", "A sentence that changes the word's meaning"], answer: 0, explanation: "A correct response uses the target word in a way that shows its meaning." },
+    { prompt: `Which step helps a reader identify the main idea of “${t}”?`, options: ["Focus on the central message and supporting details", "Choose the longest sentence only", "Ignore the title and details", "Copy an unrelated paragraph"], answer: 0, explanation: "The main idea is supported by relevant details throughout a text." },
+    { prompt: `What makes evidence useful when writing about “${t}”?`, options: ["It supports the point with relevant information", "It repeats the same claim without support", "It changes the subject", "It is unrelated to the argument"], answer: 0, explanation: "Relevant evidence helps explain and support a point." },
+    { prompt: `Which revision is most likely to make writing about “${t}” clearer?`, options: ["Use precise words and remove unnecessary repetition", "Add unrelated sentences", "Remove all punctuation", "Repeat every sentence twice"], answer: 0, explanation: "Precise wording and careful editing improve clarity." }
+  ] : subject === "Science" ? [
+    { prompt: `When investigating “${t}”, why should a scientist record observations?`, options: ["To keep evidence that can be compared and checked", "To replace evidence with guesses", "To guarantee every prediction is correct", "To avoid repeating an investigation"], answer: 0, explanation: "Recorded observations provide evidence for analysis and comparison." },
+    { prompt: `Which is the best way to test a prediction about “${t}” fairly?`, options: ["Change one factor while keeping other conditions consistent", "Change every factor at once", "Record only results that agree with the prediction", "Skip measurements"], answer: 0, explanation: "A fair test controls other conditions so the changed factor can be examined." },
+    { prompt: `What should a scientific conclusion about “${t}” be based on?`, options: ["The results and evidence collected", "A guess made before testing", "Someone's popularity", "An unrelated example"], answer: 0, explanation: "A conclusion should be supported by the investigation's evidence." },
+    { prompt: `Why might scientists repeat an investigation of “${t}”?`, options: ["To check whether results are consistent", "To guarantee the same result every time", "To avoid recording data", "To remove unexpected results"], answer: 0, explanation: "Repeating work helps assess reliability and identify unusual results." }
   ] : [
-    { prompt: `Which statement best describes the main idea of “${t}”?`, options: [`A central concept or explanation connected to ${t}`, "A detail that is unrelated", "A personal guess without evidence", "A random collection of words"], answer: 0, explanation: "A main idea expresses the central point of a topic." },
-    { prompt: `Which is the best way to support a claim about “${t}”?`, options: ["Use relevant facts or examples", "Repeat the claim only", "Use an unrelated opinion", "Leave out all details"], answer: 0, explanation: "Relevant evidence makes an explanation stronger." },
-    { prompt: `Why is it useful to compare examples of “${t}”?`, options: ["To notice similarities and differences", "To avoid understanding the topic", "To make every example identical", "To remove important information"], answer: 0, explanation: "Comparison helps identify patterns and distinctions." },
-    { prompt: `Which question would help you investigate “${t}” further?`, options: ["What evidence explains how it works?", "Can I ignore the topic?", "Why should I guess?", "Can I skip the details?"], answer: 0, explanation: "A focused question guides further investigation." }
+    { prompt: `Which source would best help verify a claim about “${t}”?`, options: ["A reliable source with relevant evidence", "An anonymous claim with no support", "An unrelated advertisement", "A rumour repeated online"], answer: 0, explanation: "Reliable, relevant evidence is the strongest basis for checking a claim." },
+    { prompt: `What is a useful way to compare two examples of “${t}”?`, options: ["Identify similarities and differences using evidence", "Assume they are identical", "Ignore their context", "Choose one without explanation"], answer: 0, explanation: "A comparison explains both similarities and differences." },
+    { prompt: `Which question encourages deeper thinking about “${t}”?`, options: ["What evidence explains why it happens?", "Can I avoid learning about it?", "Which answer can I guess?", "Can I ignore the details?"], answer: 0, explanation: "Asking why and looking for evidence encourages deeper understanding." },
+    { prompt: `How can you explain an important idea about “${t}” clearly?`, options: ["Use accurate details and a relevant example", "Use unrelated facts", "Repeat the title only", "Leave out the explanation"], answer: 0, explanation: "Accurate details and examples make an explanation clearer." }
   ];
   const shortPrompts = [
     { prompt: `Explain “${t}” in your own words.`, options: [], answer: 0, explanation: "Look for an accurate explanation using the learner's own words." },
@@ -29,9 +70,7 @@ function buildQuiz(topic: string, subject: string, difficulty: string, count: nu
   return Array.from({ length: count }, (_, i) => {
     const source = bank[i % bank.length];
     const options = [...source.options];
-    if (format === "multiple" && !easy && i % 2 === 1) options.reverse();
-    const answer = format === "multiple" && !easy && i % 2 === 1 ? options.length - 1 : source.answer;
-    return { ...source, options, answer };
+    return { ...source, options, answer: source.answer };
   });
 }
 
