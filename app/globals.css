@@ -116,3 +116,7 @@
   .worksheet-key{background:#fff;border:0;border-top:1px solid #aaa;border-radius:0;margin-top:25px;padding:20px 0 0}
   @page{size:A4;margin:16mm}
 }
+
+.worksheet-question-edit{display:block;width:100%;resize:vertical;border:1px solid transparent;border-radius:4px;background:transparent;padding:3px 4px;margin:-3px -4px;color:inherit;font:inherit;line-height:1.65}
+.worksheet-question-edit:focus{outline:1px solid #9aaf9d;background:#f8faf6}
+@media print{.worksheet-question-edit{border:0!important;outline:0!important;resize:none;padding:0;margin:0;background:transparent!important}}
