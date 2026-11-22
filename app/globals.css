@@ -160,3 +160,55 @@
  .quiz-question-list textarea,.quiz-options input{border:0!important;outline:0!important;resize:none;padding:0;margin:0;background:transparent!important}
  @page{size:A4;margin:16mm}
 }
+
+/* Rubric generator */
+.rubric-layout{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1.28fr);gap:30px;align-items:start;padding-top:25px;padding-bottom:90px}
+.rubric-controls{background:#fffefa;border:1px solid #e9e9e1;border-radius:10px;padding:30px;box-shadow:0 12px 35px #354b3d07}
+.rubric-controls label{display:block;font-size:11px;font-weight:600;color:#4e5d54;margin:16px 0}
+.rubric-controls input:not([type=checkbox]){display:block;width:100%;margin-top:8px;border:1px solid #e3e6df;border-radius:6px;background:#fffefa;padding:12px 13px;font:400 12px var(--sans);color:var(--ink);outline:none}
+.rubric-controls input:focus{border-color:#8ca895}
+.rubric-level-settings{border-top:1px solid #e9ece6;margin-top:22px;padding-top:18px}
+.rubric-level-settings>p{font-size:10px;line-height:1.6;color:#7c887f}
+.rubric-level-settings label{margin:12px 0}
+.rubric-controls .rubric-check{display:flex;align-items:center;gap:9px;font-weight:500}
+.rubric-check input{accent-color:#54745f;width:15px;height:15px}
+.rubric-total{display:flex;justify-content:space-between;align-items:center;padding:14px 15px;margin-top:18px;border-radius:7px;background:#f1f4ee;color:#526457;font-size:11px}
+.rubric-total strong{font:500 20px var(--serif);color:#34483b}
+.rubric-preview{min-width:0}
+.rubric-paper{background:#fff;border:1px solid #e8e9e4;box-shadow:0 12px 35px #354b3d0b;padding:30px;color:#27362e}
+.rubric-title-edit{display:block;width:100%;margin:22px 0 7px;padding:3px;border:1px solid transparent;background:transparent;font:500 26px var(--serif);color:#27362e}
+.rubric-title-edit:focus{outline:1px solid #9aaf9d;background:#f8faf6}
+.rubric-meta{display:flex;gap:25px;flex-wrap:wrap;font-size:10px;color:#748176;margin-bottom:18px}
+.rubric-student{display:flex;justify-content:space-between;gap:15px;padding:13px 0;border-top:1px solid #e6eae4;border-bottom:1px solid #e6eae4;font-size:10px;color:#65746a;margin-bottom:16px}
+.rubric-table-wrap{width:100%;overflow-x:auto}
+.rubric-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.rubric-table th,.rubric-table td{border:1px solid #dfe5dd;padding:9px;vertical-align:top;text-align:left}
+.rubric-table thead th{background:#f0f4ee;color:#405b49;font-size:10px;font-weight:700}
+.rubric-table thead th:first-child{width:17%}
+.rubric-table thead th small{display:block;margin-top:5px;font-size:8px;color:#7c887f;font-weight:500}
+.rubric-table tbody th{position:relative;background:#f8f9f5;font-size:10px;color:#405448}
+.rubric-table tbody th input{width:100%;border:1px solid transparent;background:transparent;padding:2px;color:inherit;font:600 10px var(--sans);overflow-wrap:anywhere}
+.rubric-table tbody th input:focus{outline:1px solid #9aaf9d;background:#fff}
+.rubric-remove{border:0;background:none;color:#9a7770;cursor:pointer;font-size:15px;padding:2px 5px;margin-top:5px}
+.rubric-table td textarea{display:block;width:100%;min-width:0;min-height:90px;resize:vertical;border:1px solid transparent;background:transparent;padding:2px;color:#58675d;font:400 9px/1.55 var(--sans)}
+.rubric-table td textarea:focus{outline:1px solid #9aaf9d;background:#f8faf6}
+.rubric-paper-footer{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #e6eae4;padding-top:12px;margin-top:18px;font-size:8px;letter-spacing:1.3px;color:#829186}
+.rubric-score-note{font-size:9px;color:#758278;margin-top:12px}
+.rubric-actions{display:flex;justify-content:space-between;gap:10px;margin-top:15px}
+.rubric-actions .button{font-size:11px;padding:12px 16px}
+@media(max-width:850px){.rubric-layout{grid-template-columns:1fr}.rubric-preview{order:-1}.rubric-controls{padding:25px}}
+@media(max-width:560px){.rubric-layout{padding-top:10px}.rubric-controls{padding:22px 18px}.rubric-paper{padding:17px}.rubric-title-edit{font-size:22px}.rubric-table th,.rubric-table td{padding:6px}.rubric-table thead th:first-child{width:19%}.rubric-table tbody th input{font-size:9px}.rubric-table td textarea{font-size:8px;min-height:110px}.rubric-student{flex-direction:column;gap:8px}.rubric-actions{flex-direction:column}.rubric-actions .button{width:100%}}
+@media print{
+ body{background:#fff!important}
+ .tool-page>.nav,.tool-intro,.rubric-controls,.preview-heading,.rubric-actions,.certificate-footnote,.footer{display:none!important}
+ .rubric-layout{display:block;width:100%;padding:0;margin:0}
+ .rubric-preview{width:100%;margin:0}
+ .rubric-paper{border:0;box-shadow:none;padding:0}
+ .rubric-title-edit{border:0!important;outline:0!important;padding:0}
+ .rubric-table-wrap{overflow:visible}
+ .rubric-table{width:100%;table-layout:fixed}
+ .rubric-table th,.rubric-table td{break-inside:avoid}
+ .rubric-table td textarea,.rubric-table tbody th input{border:0!important;outline:0!important;resize:none;padding:0;background:transparent!important}
+ .rubric-remove{display:none!important}
+ @page{size:A4 landscape;margin:10mm}
+}
