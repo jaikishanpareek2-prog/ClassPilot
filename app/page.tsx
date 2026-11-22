@@ -51,7 +51,7 @@ export default function Home() {
       <section className="why-section" id="why"><div className="wrap why-inner"><div><div className="eyebrow">A LITTLE MORE HUMAN</div><h2>Made for teachers,<br /><em>not the other way around.</em></h2></div><div className="why-points"><div><span>01</span><p><b>Easy from the first click.</b><br />No complicated setup. Just open a tool and get going.</p></div><div><span>02</span><p><b>Your work, your way.</b><br />Create resources you can adapt, print and make your own.</p></div><div><span>03</span><p><b>Useful things, thoughtfully made.</b><br />A growing toolkit shaped around real classroom needs.</p></div></div></div></section>
 
       <section className="closing wrap" id="roadmap"><div className="closing-mark">✳</div><div><div className="eyebrow">START WITH ONE THING</div><h2>Let's make your next<br /><em>school day a little easier.</em></h2></div><Link className="button button-dark" href="/tools/lesson-planner">Try the lesson planner <span>↗</span></Link></section>
-      <footer className="footer wrap"><Link className="brand" href="/"><span className="brand-mark">c</span> classpilot<span className="brand-dot">.</span></Link><span>Thoughtful tools for the people who teach.</span><span>© {new Date().getFullYear()} ClassPilot</span></footer>
+      <footer className="footer wrap"><Link className="brand" href="/"><span className="brand-mark">c</span> classpilot<span className="brand-dot">.</span></Link><span>Thoughtful tools for the people who teach.</span><Link href="/privacy">Privacy</Link><span>© {new Date().getFullYear()} ClassPilot</span></footer>
     </main>
   );
 }

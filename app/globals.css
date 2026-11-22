@@ -212,3 +212,13 @@
  .rubric-remove{display:none!important}
  @page{size:A4 landscape;margin:10mm}
 }
+
+.privacy-page{min-height:100vh;background:#f8f8f3;padding-bottom:80px}
+.privacy-content{max-width:820px;padding-top:76px}
+.privacy-content h1{font:500 clamp(42px,7vw,72px)/1.05 var(--serif);letter-spacing:-2px;color:#25352c;margin:18px 0}
+.privacy-content h1 em{color:#738c76;font-style:italic}
+.privacy-lead{font:400 19px/1.7 var(--sans);color:#53645a;max-width:680px;margin:22px 0 48px}
+.privacy-content h2{font:600 19px var(--sans);color:#2c3c32;margin:30px 0 9px}
+.privacy-content p:not(.privacy-lead){font:400 15px/1.8 var(--sans);color:#657268;max-width:740px}
+.privacy-updated{font-size:12px!important;letter-spacing:.5px;margin:38px 0 24px}
+@media(max-width:600px){.privacy-content{padding-top:42px}.privacy-content h1{letter-spacing:-1px}.privacy-lead{font-size:17px}}
