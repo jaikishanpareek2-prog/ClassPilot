@@ -52,7 +52,7 @@ export default function RubricGenerator() {
           <div className="rubric-meta"><span><b>Subject:</b> {subject || "—"}</span><span><b>Task:</b> {task || "—"}</span></div>
           <div className="rubric-student">Student: __________________________________________ <span>Date: ______________</span></div>
           <div className="rubric-table-wrap"><table className="rubric-table">
-            <thead><tr><th>Criteria</th>{levels.map((level, i) => <th key={i}><span>{level || `Level ${i + 1}`}</span>{showScore && <small>{levels.length - i}–{levels.length - i} pts</small>}</th>)}</tr></thead>
+            <thead><tr><th>Criteria</th>{levels.map((level, i) => <th key={i}><span>{level || `Level ${i + 1}`}</span>{showScore && <small>{i + 1} pt{i === 0 ? "" : "s"}</small>}</th>)}</tr></thead>
             <tbody>{criteria.map((criterion) => <tr key={criterion.id}>
               <th><input aria-label="Edit criterion name" value={criterion.name} onChange={(e) => updateCriterion(criterion.id, { name: e.target.value })} /><button className="rubric-remove" type="button" onClick={() => removeCriterion(criterion.id)} aria-label={`Remove ${criterion.name}`}>×</button></th>
               {levels.map((_, i) => <td key={i}><textarea aria-label={`Edit ${criterion.name}, level ${i + 1}`} value={criterion.descriptions[i] ?? ""} onChange={(e) => updateDescription(criterion.id, i, e.target.value)} rows={5} /></td>)}
