@@ -70,7 +70,7 @@ export default function WorksheetGenerator() {
         <label>Worksheet topic<input value={topic} maxLength={100} onChange={(e) => setTopic(e.target.value)} placeholder="e.g. Fractions, plants, persuasive writing" /></label>
         <label>Worksheet title<input value={title} maxLength={90} onChange={(e) => setTitle(e.target.value)} placeholder="Optional custom title" /></label>
         <div className="form-row">
-          <label>Subject<select value={subject} onChange={(e) => setSubject(e.target.value)}>{subjects.map((item) => <option key={item}>{item}</option>)}</select></label>
+          <label>Subject<select value={subject} onChange={(e) => setSubject(e.target.value as Subject)}>{subjects.map((item) => <option key={item}>{item}</option>)}</select></label>
           <label>Level<select value={level} onChange={(e) => setLevel(e.target.value)}>{["Early primary","Upper primary","Middle school","High school"].map((item) => <option key={item}>{item}</option>)}</select></label>
         </div>
         <label>Number of questions<select value={count} onChange={(e) => setCount(e.target.value)}>{["5","8","10","12","15"].map((item) => <option key={item} value={item}>{item} questions</option>)}</select></label>
